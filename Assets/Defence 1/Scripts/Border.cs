@@ -9,12 +9,11 @@ namespace Defence_1.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<Enemy>() != null)
-            {
-                OnEnemyCollide?.Invoke();
-            }
-
             Destroy(other.gameObject);
+
+            if (other.gameObject.GetComponent<Enemy>() == null) return;
+
+            OnEnemyCollide?.Invoke();
         }
     }
 }
